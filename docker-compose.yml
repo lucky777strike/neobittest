@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  camparser-app:
+    build: ./
+    command: ./wait-for-postgres.sh db ./camparser
+    ports:
+      - 8081:8080
+    depends_on:
+      - db
+    environment:
+      - DB_PASSWORD=qwerty
+      - SHODAN_TOKEN=JULqbOxdhe1Sj6BwtcjClvuAic6QTqQn
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+
+
+  db:
+    restart: always
+    image: postgres:latest
+    volumes:
+    - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=qwerty
+    ports:
+      - 5436:5432

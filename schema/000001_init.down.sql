@@ -1,0 +1,2 @@
+DROP TABLE cams;
+DROP TABLE tasks;
