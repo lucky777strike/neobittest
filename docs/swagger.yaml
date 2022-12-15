@@ -1,0 +1,170 @@
+basePath: /
+definitions:
+  handler.errorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+host: localhost:8081
+info:
+  contact: {}
+  description: shodan camparser
+  title: Camparser
+  version: "1.0"
+paths:
+  /api/getAllCams:
+    get:
+      consumes:
+      - application/json
+      description: Get list of cameras
+      operationId: getAllCams
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: getAllCams
+      tags:
+      - Cams
+  /api/getAllTasks:
+    get:
+      consumes:
+      - application/json
+      operationId: getAllTasks
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: getAllTasks
+      tags:
+      - Tasks
+  /api/parse:
+    get:
+      consumes:
+      - application/json
+      description: Parse shodan
+      operationId: parse
+      parameters:
+      - description: query
+        in: path
+        name: query
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: parse
+      tags:
+      - Parse
+  /api/removeAllCam:
+    get:
+      consumes:
+      - application/json
+      description: Remove all camers
+      operationId: removeAllCam
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: removeAllCam
+      tags:
+      - Cams
+  /api/removeAllTasks:
+    get:
+      consumes:
+      - application/json
+      description: Remove All Tasks
+      operationId: removeAllTasks
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: removeAllTasks
+      tags:
+      - Tasks
+  /api/removeCam:
+    get:
+      consumes:
+      - application/json
+      description: Remove camera
+      operationId: removeCam
+      parameters:
+      - description: Camera ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: removeCam
+      tags:
+      - Cams
+swagger: "2.0"

@@ -14,6 +14,13 @@ import (
 	"github.com/spf13/viper"
 )
 
+// @title Camparser
+// @version 1.0
+// @description shodan camparser
+
+// @host localhost:8081
+// @BasePath /
+
 func main() {
 
 	if err := initConfig(); err != nil {

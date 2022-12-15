@@ -4,7 +4,11 @@ import (
 	"camparser/internal/service"
 	"net/http"
 
+	_ "camparser/docs"
+
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"     // swagger embed files
+	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 )
 
 type Handler struct {
@@ -17,6 +21,7 @@ func New(service *service.Service) *Handler {
 
 func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	router.LoadHTMLGlob("./public/map/index.html")
 	router.GET("/", func(c *gin.Context) {
