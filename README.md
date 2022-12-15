@@ -27,7 +27,7 @@ docker-compose up -d
 │   ├── server //сервер
 │   └── service //бизнес логика
 ├── pkg //Общие пакеты
-│   └── shodan //пакет для работы с шоданом
+│   └── shodan //Простой функционал для работы с shodan
 ├── public  //веб
 ├── schema  //миграции бд
 ├── screenshots //скрины
